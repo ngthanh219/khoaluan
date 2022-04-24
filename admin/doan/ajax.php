@@ -23,16 +23,20 @@
   </div>
   <div class="modal-body">
         <div class="row">
-            <div class="col-sm-3">
-                <img src="/public/uploads/images/<?php echo $doan[0]['hinhanh'] ?>" class="img img-responsive" />
-            </div>
-            <div class="col-sm-9">
-                 <div style="margin-top: 20px">
-                    <?php echo $doan[0]['gioithieu'] ?>
+            <?php if ($doan[0]['hinhanh'] != null) { ?>
+                <div class="col-sm-3">
+                    <img src="<?= base_url("/public/uploads/images/" . $doan[0]['hinhanh']) ?>" class="img img-responsive" />
                 </div>
+            <?php } ?>
+            <div class="col-sm-9">
+                <?php if ($doan[0]['gioithieu'] != null) { ?>
+                    <div style="margin-top: 20px">
+                        <?= $doan[0]['gioithieu'] ?>
+                    </div>
+                <?php } ?>
+                <h2> Thông tin sinh viên</h2>
                 <ul>
                     <li> Họ tên : <?php echo  $doan[0]['tensinhvien'] ?></li>
-                  
                     <li>  Lớp     : <?php echo  $doan[0]['tenlop'] ?></li>
                     <li>  Chuyên ngành     : <?php echo  $doan[0]['tenchuyennganh'] ?></li>
                     <li>  Khoa      : <?php echo  $doan[0]['tenkhoa'] ?></li>

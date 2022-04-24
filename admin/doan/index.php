@@ -112,9 +112,9 @@ $modules = "doan";
                 
             </div>
 
-            <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
+            <!-- <div class="form-group" style="margin-top: 10px;margin-bottom: 10px;">
                 <input type="text" placeholder="" class="form-control col-sm-5 col-ms-offset-2" id="tags" placeholder="">
-            </div>
+            </div> -->
             <div id="suggesstion-box"></div>
             
             <div class="clearfix"></div>
@@ -179,7 +179,7 @@ $modules = "doan";
                         </div>
                     
                         <button type="submit" class="btn btn-success">Tìm kiếm </button>
-                        <a href="/admin/doan/" style="margin-top:10px;" class="btn btn-danger"  />Làm mới</a>
+                        <a href="<?= base_url("/admin/doan/") ?>" class="btn btn-danger"  />Làm mới</a>
                     </form>
                 </div>
                 <div class="col-md-12">
@@ -220,13 +220,21 @@ $modules = "doan";
                                             <tr>
                                                 <td><?php echo $item['id'] ?></td>
                                                 <td>
-                                                
-                                                     <img src="<?php echo base_url('/public/uploads/images/') ?><?php echo $item['hinhanh'] ?>" alt="" class="img img-thumbnail" style="width: 100px;height: 100px;">
+                                                    <?php if ($item["hinhanh"] != null) { ?>
+                                                        <img src="<?php echo base_url('/public/uploads/images/') ?><?php echo $item['hinhanh'] ?>"
+                                                            alt="" class="img img-thumbnail"
+                                                            style="width: 100px;height: 100px;">
+                                                    <?php } else { echo "Chưa cập nhật"; } ?>
                                                 </td>
                                                 <td> 
                                                     <?php echo $item['tendoan'] ?>
-                                                    <p><a href="<?php echo $item['url'] ?>" target="_blank"> Link Online  </a></p>
-                                                    <p><a href="<?php echo base_url("/public/uploads/file/" . $item['file']) ?>" target="_blank"> Download Offline </a></p>
+                                                    <?php if ($item['url'] != null || $item['url'] != '') { ?>
+                                                        <p><a href="<?php echo $item['url'] ?>" target="_blank"> Link Online  </a></p>
+                                                    <?php } ?>
+                                                    
+                                                    <?php if ($item['file'] != null || $item['file'] != '') { ?>
+                                                        <p><a href="<?php echo base_url("/public/uploads/file/" . $item['file']) ?>" target="_blank"> Download Offline </a></p>
+                                                    <?php } ?>
                                                  </td>
                                                  <?php
                                                     $sql = " SELECT tbl_doan_giaovien.*, tbl_giaovien.tengiaovien as tengiaovien,tbl_giaovien.id as idgv from tbl_doan_giaovien
@@ -330,7 +338,7 @@ $modules = "doan";
         $(".showInfo").click(function() {
             var $id = $(this).attr("data-id");
             $.ajax({
-                url : '/admin/doan/ajax.php',
+                url : '/quanlydoan/admin/doan/ajax.php',
                 method: 'POST',
                 data : { id : $id },
                 success : function(data)
@@ -346,7 +354,7 @@ $modules = "doan";
         $(".view-hd").click(function() {
             var $id = $(this).attr("data-id");
             $.ajax({
-                url : '/admin/doan/view-hd.php',
+                url : '/quanlydoan/admin/doan/view-hd.php',
                 method: 'POST',
                 data : { id : $id },
                 success : function(data)

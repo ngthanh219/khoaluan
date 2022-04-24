@@ -39,154 +39,155 @@ $modules = 'index';
                        
                         <!-- END PAGE HEADER-->
                         <!-- BEGIN PAGE CONTENT-->
-                        <div class="row">
-                            <h2 style="padding-left: 15px;font-size: 20px;"> Thống kê </h2>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat blue-madison">
-                                    <div class="visual">
-                                        <i class="fa fa-comments"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <?php echo $tongsinhvien ?>
+                        <?php if($_SESSION["table"] == "tbl_quanly") { ?>
+                            <div class="row">
+                                <h2 style="padding-left: 15px;font-size: 20px;"> Thống kê </h2>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat blue-madison">
+                                        <div class="visual">
+                                            <i class="fa fa-comments"></i>
                                         </div>
-                                        <div class="desc">
-                                            Tổng số sinh viên 
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tongsinhvien ?>
+                                            </div>
+                                            <div class="desc">
+                                                Tổng số sinh viên 
+                                            </div>
                                         </div>
+                                        <a class="more" href="<?= base_url('/admin/sinhvien') ?>"> Xem <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
-                                    <a class="more" href="/admin/sinhvien">
-                                    Xem <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat red-intense">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <?php echo $tonglop ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat red-intense">
+                                        <div class="visual">
+                                            <i class="fa fa-bar-chart-o"></i>
                                         </div>
-                                        <div class="desc">
-                                            Tổng số lớp 
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tonglop ?>
+                                            </div>
+                                            <div class="desc">
+                                                Tổng số lớp 
+                                            </div>
                                         </div>
+                                        <a class="more" href="<?= base_url('/admin/lop') ?>">
+                                        Xem <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
-                                    <a class="more" href="/admin/lop">
-                                    Xem <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat green-haze">
-                                    <div class="visual">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <?php echo $tongkhoa ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat green-haze">
+                                        <div class="visual">
+                                            <i class="fa fa-shopping-cart"></i>
                                         </div>
-                                        <div class="desc">
-                                            Tổng số Khoa 
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tongkhoa ?>
+                                            </div>
+                                            <div class="desc">
+                                                Tổng số Khoa 
+                                            </div>
                                         </div>
+                                        <a class="more" href="<?= base_url('/admin/khoa') ?>">
+                                        Xem <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
-                                    <a class="more" href="/admin/khoa">
-                                    Xem <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat purple-plum">
-                                    <div class="visual">
-                                        <i class="fa fa-globe"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <?php echo $tongchuyennganh ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat purple-plum">
+                                        <div class="visual">
+                                            <i class="fa fa-globe"></i>
                                         </div>
-                                        <div class="desc">
-                                            Tổng số chuyên ngành 
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tongchuyennganh ?>
+                                            </div>
+                                            <div class="desc">
+                                                Tổng số chuyên ngành 
+                                            </div>
                                         </div>
+                                        <a class="more" href="<?= base_url('/admin/chuyennganh') ?>">
+                                        Xem<i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
-                                    <a class="more" href="/admin/chuyennganh">
-                                     Xem<i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
                                 </div>
-                            </div>
-                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat purple-plum">
-                                    <div class="visual">
-                                        <i class="fa fa-globe"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <?php echo $tongdoan ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat purple-plum">
+                                        <div class="visual">
+                                            <i class="fa fa-globe"></i>
                                         </div>
-                                        <div class="desc">
-                                            Tổng số đồ án 
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tongdoan ?>
+                                            </div>
+                                            <div class="desc">
+                                                Tổng số đồ án 
+                                            </div>
                                         </div>
+                                        <a class="more" href="<?= base_url('/admin/doan') ?>">
+                                        Xem<i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
-                                    <a class="more" href="/admin/doan">
-                                     Xem<i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat green-haze">
-                                    <div class="visual">
-                                        <i class="fa fa-shopping-cart"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <?php echo $countDo[0]['suma'] ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat green-haze">
+                                        <div class="visual">
+                                            <i class="fa fa-shopping-cart"></i>
                                         </div>
-                                        <div class="desc">
-                                            Sinh viên đạt
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $countDo[0]['suma'] ?>
+                                            </div>
+                                            <div class="desc">
+                                                Sinh viên đạt
+                                            </div>
                                         </div>
+                                        <a class="more" href="<?= base_url('/admin/sinhviendat.php') ?>">
+                                        Xem <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
-                                    <a class="more" href="/admin/sinhviendat.php">
-                                    Xem <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
                                 </div>
-                            </div>
-                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat red-intense">
-                                    <div class="visual">
-                                        <i class="fa fa-bar-chart-o"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <?php echo $tongdoan - $countDo[0]['suma'] ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat red-intense">
+                                        <div class="visual">
+                                            <i class="fa fa-bar-chart-o"></i>
                                         </div>
-                                        <div class="desc">
-                                            Sinh viên chưa đạt 
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tongdoan - $countDo[0]['suma'] ?>
+                                            </div>
+                                            <div class="desc">
+                                                Sinh viên chưa đạt 
+                                            </div>
                                         </div>
+                                        <a class="more" href="<?= base_url('/admin/sinhvienchuadat.php') ?>">
+                                        Xem <i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
-                                    <a class="more" href="/admin/sinhvienchuadat.php">
-                                    Xem <i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="dashboard-stat purple-plum">
-                                    <div class="visual">
-                                        <i class="fa fa-globe"></i>
-                                    </div>
-                                    <div class="details">
-                                        <div class="number">
-                                            <?php echo $tonggv ?>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat purple-plum">
+                                        <div class="visual">
+                                            <i class="fa fa-globe"></i>
                                         </div>
-                                        <div class="desc">
-                                            Tổng số giáo viên
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tonggv ?>
+                                            </div>
+                                            <div class="desc">
+                                                Tổng số giáo viên
+                                            </div>
                                         </div>
+                                        <a class="more" href="<?= base_url('/admin/doan') ?>">
+                                        Xem<i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
                                     </div>
-                                    <a class="more" href="/admin/doan">
-                                     Xem<i class="m-icon-swapright m-icon-white"></i>
-                                    </a>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
                         <!-- END PAGE CONTENT-->
                     </div>
                 </div>

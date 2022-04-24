@@ -6,8 +6,11 @@
     {
         function base_url( $url = '' )
         {
-        	return  'http://localhost/quanlydoan'. $url;
-            return "http://".$_SERVER['SERVER_NAME'] . $url ;
+            if ($url != '') {
+                return 'http://localhost/quanlydoan'. $url;
+            }
+            
+        	header("Location: http://localhost/quanlydoan") ; exit();
         }
     }
 

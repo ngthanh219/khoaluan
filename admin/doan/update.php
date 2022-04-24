@@ -15,6 +15,7 @@ $modules = "doan";
     $sinhvien    = $db->query("tbl_sinhvien","*","");
     $giaovien    = $db->query("tbl_giaovien","*","");
     $hoidong    = $db->query("tbl_hoidong","*","");
+
      // lay id khoa can update
     $id = getValue("id","GET",'');
     // kiem tra xem co ton tai id trong csdl khong
@@ -25,6 +26,8 @@ $modules = "doan";
     {
         redirect('/admin/404.php');
     }
+
+    $detaihientai = $db->query("tbl_detai", "*", " AND madetai = '" . $editDoan["tendoan"] . "'")[0];
     $sql = " SELECT tbl_doan_giaovien.*, tbl_giaovien.tengiaovien as tengiaovien,tbl_giaovien.id as idgv from tbl_doan_giaovien
     LEFT JOIN  tbl_giaovien on tbl_giaovien.id = tbl_doan_giaovien.id_giaovien
      WHERE id_doan = $id ";
@@ -77,10 +80,11 @@ $modules = "doan";
 
       
 
-        if ($tendoan == '')
-        {
-            $errors['tendoan'] = ' Tên đồ án    không được để trống ' ;
-        }
+        // if ($tendoan == '')
+        // {
+        //     $errors['tendoan'] = ' Tên đồ án    không được để trống ' ;
+        // }
+
         if ($madoan == '')
         {
             $errors['madoan'] = ' Mã đồ án     không được để trống ' ;
@@ -96,16 +100,15 @@ $modules = "doan";
                 }
             }
         }
-         if ($url == '')
 
-        {
-            $errors['url'] = 'url     không được để trống ' ;
-        }
+        // if ($url == '') {
+        //     $errors['url'] = 'url     không được để trống ' ;
+        // }
+
         if ($gioithieu == '')
         {
             $errors['gioithieu'] = 'gioithieu     không được để trống ' ;
         }
-       
 
         if (empty($errors))
         {
@@ -116,7 +119,7 @@ $modules = "doan";
                 'id_malop'   => $id_malop,
                 'id_masinhvien' => $id_masinhvien,
                 'id_hoidong' => $id_hoidong,
-                'tendoan' => $tendoan,
+                // 'tendoan' => $tendoan,
                 'madoan' => $madoan,
                 'url' => $url,
                 'gioithieu' => $gioithieu,
@@ -390,7 +393,34 @@ $modules = "doan";
                                             <?php endif; ?>
                                         </div>
                                     </div>
+
                                     <div class="form-group">
+                                        <label class="col-md-2 control-label"> Tên đồ án </label>
+                                        <div class="col-md-9">
+                                            <input type="text" name="tendoan" class="form-control inputForm" value="<?php echo $detaihientai['tendetai'] ?>" disabled>
+                                        </div>
+                                    </div>
+                                        
+                                    <!-- <div class="form-group">
+                                        <label class="col-md-2 control-label"> Thay đổi đề tài </label>
+                                        <div class="col-md-4">
+                                            <select name="tendoan" class="form-control tendoan">
+                                                <option value=""> -- Không thay đổi -- </option>
+                                                <?php foreach($detai as $item) : ?>
+                                                    <option value="<?php echo $item['madetai'] ?>"
+                                                        <?php echo isset($editDoan) && $editDoan['tendoan'] == $item['madetai'] ? "selected='selected'" : "" ?>>
+                                                        <?php echo $item['tendetai'] ?>
+                                                    </option>
+                                                <?php endforeach ; ?>
+                                            </select>
+                                            <?php if (isset($errors['tendoan']) && $errors['tendoan'] != '') :?>
+                                            <span class="help-block"
+                                                style="margin-bottom: -10px"><?php echo $errors['tendoan'] ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div> -->
+
+                                    <!-- <div class="form-group">
                                         <label class="col-md-2 control-label"> Tên đồ án   </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control inputForm" name="tendoan" placeholder=" VD : Nguyễn Văn A " value="<?php echo $editDoan['tendoan'] ?>">
@@ -398,7 +428,7 @@ $modules = "doan";
                                                 <span class="help-block" style="margin-bottom: -10px"><?php echo $errors['tendoan'] ?></span>
                                             <?php endif; ?>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"> Mã đồ án  </label>
@@ -445,8 +475,7 @@ $modules = "doan";
                                             <?php endif; ?>
                                         </div>
                                     </div>
-
-                                     <div class="form-group">
+                                    <div class="form-group">
                                         <label class="col-md-2 control-label">  Link offline  </label>
                                         <div class="col-md-9">
                                             <input type="file" class="form-control"  name="file" placeholder="file" value="" >

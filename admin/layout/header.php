@@ -3,7 +3,7 @@
                     <div class="page-header-inner">
                         <!-- BEGIN LOGO -->
                         <div class="page-logo">
-                            <a href="/admin" style="margin-top: 15px">TrungPhuNA</a>
+                            <a href="/admin" style="margin-top: 15px">UTT</a>
                             <div class="menu-toggler sidebar-toggler">
                                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
                             </div>

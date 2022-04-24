@@ -1,22 +1,22 @@
 <?php
-    require_once  __DIR__."/../autoload.php";
+    require_once  __DIR__."/../../autoload.php";
 
     if ($_SERVER['REQUEST_METHOD'] == "POST")
     {
         $email = getValue("email","POST","");
         $pass  = getValue("password","POST","");
 
-        $check = $db->fetchsql(" SELECT * FROM tbl_quanly WHERE email = '".$email."'  AND matkhau = '".$pass."' ");
+        $check = $db->fetchsql(" SELECT * FROM tbl_giaovien WHERE email = '".$email."'  AND matkhau = '".$pass."' ");
 
         if (count($check) > 0)
         {
             $_SESSION['admin_id']   = $check[0]['id'];
-            $_SESSION['table'] = "tbl_quanly";
-            $_SESSION['admin_name'] = $check[0]['tenquanly'];
-            $_SESSION['check_login'] = $check[0]['tenquanly'];
+            $_SESSION['table'] = "tbl_giaovien";
+            $_SESSION['admin_name'] = $check[0]['tengiaovien'];
+            $_SESSION['check_login'] = $check[0]['tengiaovien'];
             $_SESSION['success'] =  " Đăng nhập thành công ";
            
-            header("Location: ".base_url("/admin"));
+            header("Location: ".base_url("/admin/doan/do-an-cua-ban.php"));
         }
         else
         {
@@ -29,7 +29,7 @@
     <html >
     <head>
         <meta charset="UTF-8">
-        <title>  Đăng nhập hệ thống  </title>
+        <title>  Giảng viên  </title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -128,7 +128,7 @@
     <div class="login">
         <div class="login-triangle"></div>
 
-        <h2 class="login-header"> Đăng nhập hệ thông </h2>
+        <h2 class="login-header"> Quản trị giảng viên </h2>
 
         <form class="login-container" action="" method="POST">
             <?php if(isset($_SESSION['error'])) : ?>
