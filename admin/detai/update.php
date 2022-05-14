@@ -117,7 +117,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-2 control-label"> Mã hệ <span class="text-danger">(*)</span> </label>
+                                        <label class="col-md-2 control-label"> Mã đề tài <span class="text-danger">(*)</span> </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control input-inline input-medium" name="madetai" value="<?php echo $editDetai['madetai'] ?>" placeholder="decao">
                                             <?php if (isset($errors['madetai']) && $errors['madetai'] != '') :?>

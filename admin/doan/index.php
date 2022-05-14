@@ -241,7 +241,6 @@ $modules = "doan";
                                                     LEFT JOIN  tbl_giaovien on tbl_giaovien.id = tbl_doan_giaovien.id_giaovien
                                                      WHERE id_doan = ".$item['id'];
                                                     $listgv = $db->fetchsql($sql);
-
                                                  ?>
 
                                                 <td> 
@@ -252,6 +251,14 @@ $modules = "doan";
                                                         <?php endforeach ; ?>
                                                         <p></p>
                                                         <a  class="btn btn-info btn-xs view-hd"  data-id="<?= $item['id']?>">Tên hội đồng BV : <?= $item['tenhoidong'] ?></a>
+                                                        <br>
+                                                        <?php 
+                                                            $dot = $db->fetchOne("tbl_dot", (int) $item["dot_id"]);
+
+                                                            if ($dot) {
+                                                        ?>
+                                                            <a class="btn btn-info btn-xs view-hd"> Đợt <?= $dot["dot"] ?> </a>
+                                                        <?php } ?>
 
                                                 </td>
                                                 <td> <?php echo $item['tensinhvien'] ?> </td>

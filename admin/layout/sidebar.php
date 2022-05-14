@@ -42,6 +42,9 @@
                         <li class="<?php echo isset($modules) && $modules == 'doan' ? 'open active' : '' ?>">
                             <a href="<?php echo base_url('/admin/doan') ?>"> Danh sách đồ án   </a>
                         </li>
+                        <li class="<?php echo isset($modules) && $modules == 'dot' ? 'open active' : '' ?>">
+                            <a href="<?php echo base_url('/admin/dot') ?>"> Danh sách đợt làm đồ án   </a>
+                        </li>
                         <li class="<?php echo isset($modules) && $modules == 'quanly' ? 'open active' : '' ?>">
                             <a href="<?php echo base_url('/admin/quanly') ?>"> Quản lý    </a>
                         </li>

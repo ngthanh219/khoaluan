@@ -15,6 +15,7 @@ $modules = "doan";
     $sinhvien    = $db->query("tbl_sinhvien","*","");
     $giaovien    = $db->query("tbl_giaovien","*","");
     $hoidong    = $db->query("tbl_hoidong","*","");
+    $dot    = $db->query("tbl_dot","*","");
 
      // lay id khoa can update
     $id = getValue("id","GET",'');
@@ -48,6 +49,7 @@ $modules = "doan";
         $diem = getValue("diem","POST","");
         $id_giaovien = getValue("id_giaovien","POST","");
         $id_hoidong = getValue("id_hoidong","POST","");
+        $dot_id = getValue("dot_id","POST","");
        $giaovien_pb = getValue("giaovien_pb","POST","");
 
         if ($id_makhoa == '')
@@ -59,6 +61,10 @@ $modules = "doan";
             $errors['id_hoidong'] = ' Hội đồng không được để trống ' ;
         }
 
+        if ($dot_id == '')
+        {
+            $errors['dot_id'] = ' Đợt không được để trống ' ;
+        }
 
         if ($id_giaovien == '')
         {
@@ -125,6 +131,7 @@ $modules = "doan";
                 'gioithieu' => $gioithieu,
                 'diem' => $diem,
                 'id_giaovien' => $id_giaovien,
+                'dot_id' => $dot_id
             
             ];
 
@@ -393,6 +400,20 @@ $modules = "doan";
                                             <?php endif; ?>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label class="col-md-2 control-label"> Đợt   </label>
+                                        <div class="col-md-4">
+                                            <select name="dot_id" class="form-control">
+                                                <option value=""> --  Mời bạn chọn đợt ! -- </option>
+                                                <?php foreach($dot as $item) : ?>
+                                                    <option value="<?php echo $item['id'] ?>" <?php echo isset($editDoan) && $editDoan['dot_id'] == $item['id'] ? "selected='selected'" : "" ?>><?php echo $item['dot'] ?></option>
+                                                <?php endforeach ; ?>
+                                            </select>
+                                            <?php if (isset($errors['dot_id']) && $errors['dot_id'] != '') :?>
+                                                <span class="help-block" style="margin-bottom: -10px"><?php echo $errors['dot_id'] ?></span>
+                                            <?php endif; ?>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <label class="col-md-2 control-label"> Tên đồ án </label>
@@ -447,7 +468,7 @@ $modules = "doan";
                                             <?php endif; ?>
                                         </div>
                                     </div>
-                                     <div class="form-group">
+                                    <div class="form-group">
                                         <label class="col-md-2 control-label"> Giáo viên phản biện  </label>
                                         <div class="col-md-9">
                                             <?php foreach($listgv as $val) :?>

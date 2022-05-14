@@ -7,6 +7,8 @@ $modules = 'index';
     $tongchuyennganh = $db->countTable("tbl_chuyennganh");
     $tongdoan = $db->countTable("tbl_doan");
     $tonggv = $db->countTable("tbl_giaovien");
+    $tongdt = $db->countTable("tbl_detai");
+    $tongdtdg = count($db->fetchsql("select * from tbl_detai where selected = 1"));
     $sql1  = " SELECT count(id) as suma FROM tbl_doan WHERE diem >= 5 ";
     $countDo = $db->fetchsql($sql1);
 
@@ -179,6 +181,42 @@ $modules = 'index';
                                             </div>
                                             <div class="desc">
                                                 Tổng số giáo viên
+                                            </div>
+                                        </div>
+                                        <a class="more" href="<?= base_url('/admin/doan') ?>">
+                                        Xem<i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat purple-plum">
+                                        <div class="visual">
+                                            <i class="fa fa-globe"></i>
+                                        </div>
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tongdt ?>
+                                            </div>
+                                            <div class="desc">
+                                                Tổng số đề tài
+                                            </div>
+                                        </div>
+                                        <a class="more" href="<?= base_url('/admin/detai') ?>">
+                                        Xem<i class="m-icon-swapright m-icon-white"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                    <div class="dashboard-stat purple-plum">
+                                        <div class="visual">
+                                            <i class="fa fa-globe"></i>
+                                        </div>
+                                        <div class="details">
+                                            <div class="number">
+                                                <?php echo $tongdtdg ?>
+                                            </div>
+                                            <div class="desc">
+                                                Tổng số đề tài đã phân
                                             </div>
                                         </div>
                                         <a class="more" href="<?= base_url('/admin/doan') ?>">

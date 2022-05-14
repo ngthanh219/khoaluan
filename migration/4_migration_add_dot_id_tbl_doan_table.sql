@@ -1,0 +1,1 @@
+ALTER TABLE tbl_doan ADD dot_id int;
