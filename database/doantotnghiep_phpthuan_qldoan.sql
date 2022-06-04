@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2022 at 01:09 PM
+-- Generation Time: Jun 04, 2022 at 01:47 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -75,7 +75,8 @@ INSERT INTO `tbl_detai` (`id`, `madetai`, `tendetai`, `selected`, `status`) VALU
 (1, 'decao', 'Xây dựng website bán hàng cho thương hiệu Decao', 1, 1),
 (2, 'coccachshop', 'Xây dựng website bán hàng cho thương hiệu coccachshop', 0, 0),
 (3, 'lakshop', 'Xây dựng website cho cửa hàng lakshop studio', 0, 0),
-(4, 'DT1', 'Đề tài mới', 1, 1);
+(4, 'DT1', 'Đề tài mới', 1, 1),
+(5, '123', '321', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -122,7 +123,7 @@ INSERT INTO `tbl_doan` (`id`, `tendoan`, `madoan`, `id_makhoa`, `id_machuyenngan
 (14, 'Do an tot nghiep', '121', 'mkktvt', 'KT', '64DCKT01', '64DCKT8980', 15, 3, NULL, 6, '12121', 'NOTE-WEB.doc', 'Screen Shot 2017-12-19 at 8.29.51 PM.png', 0, 0, '<p>ok</p>', 0, NULL),
 (15, 'ok', 'ok', 'mkktvt', 'KT', '64DCKT01', '64DCKT8980', 19, 1, 'ko , hu , o', 9, 'ok', 'NOTE-WEB.doc', 'Screen Shot 2017-12-19 at 8.29.47 PM.png', 0, 0, '<p>ok</p>', 0, NULL),
 (23, 'decao', 'DC123', 'mkcntt', 'HTTT', '64DCTH03', '64DCTH3090', 12, 1, NULL, 9.5, 'https://stepn.com/', NULL, NULL, 0, 0, '<p>Chấp nhận</p>', 1, 3),
-(24, 'DT1', 'DADTM', 'mkcntt', 'HTTT', '64DCTH03', '64DCTH3090', 12, 1, NULL, 0, '', NULL, NULL, 0, 0, '<p>OK</p>', 1, 3);
+(24, 'DT1', 'DADTM', 'mkcntt', 'HTTT', '64DCTH03', '64DCTH3090', 12, 1, NULL, 7, '', 'file.png', 'test.png', 0, 0, 'OK', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -416,41 +417,42 @@ CREATE TABLE `tbl_sinhvien` (
   `email` varchar(50) NOT NULL,
   `quequan` varchar(100) NOT NULL,
   `sodienthoai` varchar(15) NOT NULL,
-  `hinhanh` varchar(100) NOT NULL
+  `hinhanh` varchar(100) NOT NULL,
+  `process` int(11) NOT NULL DEFAULT '0' COMMENT '0: Cho phép, 1: Không cho phép'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_sinhvien`
 --
 
-INSERT INTO `tbl_sinhvien` (`id`, `tensinhvien`, `masinhvien`, `matkhau`, `ngaysinh`, `id_makhoa`, `id_machuyennganh`, `id_malop`, `id_mahedaotao`, `email`, `quequan`, `sodienthoai`, `hinhanh`) VALUES
-(6, 'Lê Thị Phương My', '64DCTH3090', 'sinhvien', '1995-01-15', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'sinhvien@gmail.com', 'Thanh Bính-Thanh Hà-Hải Dương', '0995496181', '12208523_1656788374600047_332592549829393046_n - Copy.jpg'),
-(7, 'Thái Thị THùy Trang', '64DCTH1234', '123456', '1995-04-12', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'thaitrang@gmail.com', 'Đô Lương-Nghệ An', '0954263547', '12208523_1656788374600047_332592549829393046_n - Copy.jpg'),
-(8, 'Trần Văn Phúc', '64DCTH1235', '123456', '1995-04-12', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'tranvanphuc@gmail.com', 'Thanh Bính-Thanh Hà-Hải Dương', '01675536372', '12208523_1656788374600047_332592549829393046_n - Copy.jpg'),
-(9, 'Hoàng Thị Hằng', '64DCTH2344', '123456', '1995-03-31', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'hoanghang', 'Hiệp Hòa-Bắc Giang', '01644911148', '12231493_628792180591837_753912344_n - Copy.jpg'),
-(10, 'Vũ Thị Mỹ Hạnh', '64DCTH6544', '123456', '2017-12-16', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'hanh@gmail.com', 'Hoàng Mai-Hà Nội', '0965123345', ''),
-(11, 'Vũ Thị Mỹ Hạnh', '64DCTH2345', '123456', '2017-12-07', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'vuhanh@gmail.com', 'Đống Đa-Hà Nội', '0164723123', ''),
-(12, 'Vũ Thị Thùy', '64DCTH3546', '123456', '2017-12-02', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'vuthithuy@gmail.com', 'Đô Lương-Nghệ An', '0965364532', ''),
-(13, 'Trần Văn Khôi', '64DCTH1236', '123456', '2017-12-08', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'tranvakhoi@gmail.com', 'Thanh Xuân Bắn-Hà Nội', '0976768765', ''),
-(14, 'Trịnh Quang Hưng', '64DCTH2321', '123456', '2017-12-06', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'trinhquanghung@gmail.com', 'Thanh Bính-Thanh Hà-Hải Dương', '0978766767', ''),
-(15, 'Vũ Hoàng Anh', '64DCTH0989', '123456', '2017-08-09', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'vuhoanganh@gmail.com', 'Quỳnh Lưu-Nghệ An', '0977879876', ''),
-(16, 'Nguyễn Văn Tân', '64DCTH8987', '123456', '2017-12-08', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'nguyenvantan@gmail.com', 'Vĩnh Lập-Thanh Hà-Hải Dương', '0989876767', ''),
-(17, 'Võ Thu Lý', '64DCTH9876', '123456', '2017-12-20', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'vothuly@gmail.com', 'Mỹ Đức- Hà Nội', '01678789890', ''),
-(18, 'Lê Nguyễn Vương Khang', '64DCTH9098', '123456', '2017-12-09', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'lenguyenvuongkhang@gmail.com', 'Bát Trang-Hải Phòng', '0954676545', ''),
-(19, 'Lê Thị Thu Hương', '64DCTH3423', '123456', '2017-12-14', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'thuhuong@gmail.com', 'Quỳnh Lưu-Nghệ An', '0987676565', ''),
-(20, 'Lê Văn Nam', '64DCTH7676', '123456', '2017-12-09', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'levannam@gmail.com', 'Bát Trang-Hải Phòng', '0967676543', ''),
-(21, 'Đinh Thị Hằng', '64DCTH8980', '123456', '2017-12-03', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'dinhthihang@gmail.com', 'Thanh Thủy-Thanh Hà-Hải Dương', '0956765432', ''),
-(22, 'Lê Thị Thu Thủy', '64DCDT9098', '123456', '2017-09-01', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'thuthuy@gmail.com', 'Gia Lâm-Hà Nội', '0912565432', ''),
-(23, 'Trần Văn Thực', '64DCDT8900', '123456', '2017-12-29', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'tranvanthuc@gmail.com', 'Quán Trang-Hải Phòng', '0978787654', ''),
-(24, 'Liêu Văn Ninh', '64DCDT9899', '123456', '2017-12-11', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'lieuvanninh@gmail.com', 'Thanh Hà-Hải Dương', '0987876543', ''),
-(25, 'Lê Sĩ Hợi', '64DCĐT8906', '123456', '2017-12-09', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'lesihoi@gmail.com', 'Thành Thịnh-Thanh Hà-Hải Dương', '0165787654', ''),
-(26, 'Trần Hữu Nghĩa', '64DCKT8980', '123456', '2017-12-20', 'mkktvt', 'KT', '64DCKT01', 'DHCQ', 'tranhuunghia@gmail.com', 'Hải Dương', '0978789098', ''),
-(27, 'Lê Thị Phương Mai', '64DCQTDN7876', '123456', '2017-12-14', 'mkktvt', 'QTDN', '64DCQTDN01', 'DHCQ', 'lethiphuongmai@gmail.com', 'Hải Phòng', '0129876543', ''),
-(28, 'Trần Văn Thực', '64DCOTO8909', '123456', '2017-12-28', 'mkck', 'OTO', '64DCOTO01', 'DHCQ', 'vanthuc@gmail.com', 'Hà Tĩnh', '0897654321', ''),
-(29, 'Lê Thị Luyến', '64DCDT8876', '123456', '2017-12-27', 'mkcntt', 'DTVT', '64DCDT02', 'DHCQ', 'luyen@gmail.com', 'Nam Định', '0978765432', ''),
-(30, 'Lê Thị Lan', '64DCDT6543', '123456', '2017-12-25', 'mkcntt', 'DTVT', '64DCDT03', 'DHCQ', 'lelan@gmail.com', 'Hưng Yên', '0278787654', ''),
-(31, 'Trần Văn An', '64DCMXD8904', '123456', '2017-09-15', 'mkck', 'MXD', '64DCMXD01', 'DHCQ', 'tranvanan@gmail.com', 'Nam Sách-Hải Dương', '0123456789', ''),
-(32, 'Lê Văn Luyện', '64DCMTT5654', '123456', '2017-12-13', 'mkck', 'MTT', '64DCMTT01', 'DHCQ', 'levanluyen@mail.com', 'Bát Trang-An Lão-Hải Phòng', '0954543211', '');
+INSERT INTO `tbl_sinhvien` (`id`, `tensinhvien`, `masinhvien`, `matkhau`, `ngaysinh`, `id_makhoa`, `id_machuyennganh`, `id_malop`, `id_mahedaotao`, `email`, `quequan`, `sodienthoai`, `hinhanh`, `process`) VALUES
+(6, 'Lê Thị Phương My', '64DCTH3090', 'sinhvien', '1995-01-15', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'sinhvien@gmail.com', 'Thanh Bính-Thanh Hà-Hải Dương', '0995496181', '12208523_1656788374600047_332592549829393046_n - Copy.jpg', 0),
+(7, 'Thái Thị THùy Trang', '64DCTH1234', '123456', '1995-04-12', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'thaitrang@gmail.com', 'Đô Lương-Nghệ An', '0954263547', '12208523_1656788374600047_332592549829393046_n - Copy.jpg', 0),
+(8, 'Trần Văn Phúc', '64DCTH1235', '123456', '1995-04-12', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'tranvanphuc@gmail.com', 'Thanh Bính-Thanh Hà-Hải Dương', '01675536372', '12208523_1656788374600047_332592549829393046_n - Copy.jpg', 0),
+(9, 'Hoàng Thị Hằng', '64DCTH2344', '123456', '1995-03-31', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'hoanghang', 'Hiệp Hòa-Bắc Giang', '01644911148', '12231493_628792180591837_753912344_n - Copy.jpg', 0),
+(10, 'Vũ Thị Mỹ Hạnh', '64DCTH6544', '123456', '2017-12-16', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'hanh@gmail.com', 'Hoàng Mai-Hà Nội', '0965123345', '', 0),
+(11, 'Vũ Thị Mỹ Hạnh', '64DCTH2345', '123456', '2017-12-07', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'vuhanh@gmail.com', 'Đống Đa-Hà Nội', '0164723123', '', 0),
+(12, 'Vũ Thị Thùy', '64DCTH3546', '123456', '2017-12-02', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'vuthithuy@gmail.com', 'Đô Lương-Nghệ An', '0965364532', '', 0),
+(13, 'Trần Văn Khôi', '64DCTH1236', '123456', '2017-12-08', 'mkcntt', 'HTTT', '64DCTH01', 'DHCQ', 'tranvakhoi@gmail.com', 'Thanh Xuân Bắn-Hà Nội', '0976768765', '', 0),
+(14, 'Trịnh Quang Hưng', '64DCTH2321', '123456', '2017-12-06', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'trinhquanghung@gmail.com', 'Thanh Bính-Thanh Hà-Hải Dương', '0978766767', '', 0),
+(15, 'Vũ Hoàng Anh', '64DCTH0989', '123456', '2017-08-09', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'vuhoanganh@gmail.com', 'Quỳnh Lưu-Nghệ An', '0977879876', '', 0),
+(16, 'Nguyễn Văn Tân', '64DCTH8987', '123456', '2017-12-08', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'nguyenvantan@gmail.com', 'Vĩnh Lập-Thanh Hà-Hải Dương', '0989876767', '', 0),
+(17, 'Võ Thu Lý', '64DCTH9876', '123456', '2017-12-20', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'vothuly@gmail.com', 'Mỹ Đức- Hà Nội', '01678789890', '', 0),
+(18, 'Lê Nguyễn Vương Khang', '64DCTH9098', '123456', '2017-12-09', 'mkcntt', 'HTTT', '64DCTH02', 'DHCQ', 'lenguyenvuongkhang@gmail.com', 'Bát Trang-Hải Phòng', '0954676545', '', 0),
+(19, 'Lê Thị Thu Hương', '64DCTH3423', '123456', '2017-12-14', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'thuhuong@gmail.com', 'Quỳnh Lưu-Nghệ An', '0987676565', '', 0),
+(20, 'Lê Văn Nam', '64DCTH7676', '123456', '2017-12-09', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'levannam@gmail.com', 'Bát Trang-Hải Phòng', '0967676543', '', 0),
+(21, 'Đinh Thị Hằng', '64DCTH8980', '123456', '2017-12-03', 'mkcntt', 'HTTT', '64DCTH03', 'DHCQ', 'dinhthihang@gmail.com', 'Thanh Thủy-Thanh Hà-Hải Dương', '0956765432', '', 0),
+(22, 'Lê Thị Thu Thủy', '64DCDT9098', '123456', '2017-09-01', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'thuthuy@gmail.com', 'Gia Lâm-Hà Nội', '0912565432', '', 0),
+(23, 'Trần Văn Thực', '64DCDT8900', '123456', '2017-12-29', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'tranvanthuc@gmail.com', 'Quán Trang-Hải Phòng', '0978787654', '', 0),
+(24, 'Liêu Văn Ninh', '64DCDT9899', '123456', '2017-12-11', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'lieuvanninh@gmail.com', 'Thanh Hà-Hải Dương', '0987876543', '', 0),
+(25, 'Lê Sĩ Hợi', '64DCĐT8906', '123456', '2017-12-09', 'mkcntt', 'DTVT', '64DCDT01', 'DHCQ', 'lesihoi@gmail.com', 'Thành Thịnh-Thanh Hà-Hải Dương', '0165787654', '', 0),
+(26, 'Trần Hữu Nghĩa', '64DCKT8980', '123456', '2017-12-20', 'mkktvt', 'KT', '64DCKT01', 'DHCQ', 'tranhuunghia@gmail.com', 'Hải Dương', '0978789098', '', 0),
+(27, 'Lê Thị Phương Mai', '64DCQTDN7876', '123456', '2017-12-14', 'mkktvt', 'QTDN', '64DCQTDN01', 'DHCQ', 'lethiphuongmai@gmail.com', 'Hải Phòng', '0129876543', '', 0),
+(28, 'Trần Văn Thực', '64DCOTO8909', '123456', '2017-12-28', 'mkck', 'OTO', '64DCOTO01', 'DHCQ', 'vanthuc@gmail.com', 'Hà Tĩnh', '0897654321', '', 0),
+(29, 'Lê Thị Luyến', '64DCDT8876', '123456', '2017-12-27', 'mkcntt', 'DTVT', '64DCDT02', 'DHCQ', 'luyen@gmail.com', 'Nam Định', '0978765432', '', 0),
+(30, 'Lê Thị Lan', '64DCDT6543', '123456', '2017-12-25', 'mkcntt', 'DTVT', '64DCDT03', 'DHCQ', 'lelan@gmail.com', 'Hưng Yên', '0278787654', '', 0),
+(31, 'Trần Văn An', '64DCMXD8904', '123456', '2017-09-15', 'mkck', 'MXD', '64DCMXD01', 'DHCQ', 'tranvanan@gmail.com', 'Nam Sách-Hải Dương', '0123456789', '', 0),
+(32, 'Lê Văn Luyện', '64DCMTT5654', '123456', '2017-12-13', 'mkck', 'MTT', '64DCMTT01', 'DHCQ', 'levanluyen@mail.com', 'Bát Trang-An Lão-Hải Phòng', '0954543211', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -549,7 +551,7 @@ ALTER TABLE `tbl_chuyennganh`
 -- AUTO_INCREMENT for table `tbl_detai`
 --
 ALTER TABLE `tbl_detai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_doan`
