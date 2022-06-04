@@ -70,50 +70,50 @@
         {
             $errors['madoan'] = ' Mã đồ án     không được để trống ' ;
         }
-         if ($url == '')
-        {
-            $errors['url'] = 'url     không được để trống ' ;
-        }
+        //  if ($url == '')
+        // {
+        //     $errors['url'] = 'url     không được để trống ' ;
+        // }
         if ($gioithieu == '')
         {
             $errors['gioithieu'] = 'gioithieu     không được để trống ' ;
         }
-        if ( isset ($_FILES['hinhanh']) && $_FILES['hinhanh']['name'] != NULL)
-        {
-            $file_name = $_FILES['hinhanh']['name'];
-            $file_tmp  = $_FILES['hinhanh']['tmp_name'];
-            $file_type = $_FILES['hinhanh']['type'];
-            $file_erro = $_FILES['hinhanh']['error'];
-            if ($file_erro == 0)
-            {
-                $hinhanh = $file_name;
-            }
-        }
-        else
-        {
-            $errors['hinhanh'] = "  Mời bạn chọn hình  ảnh!!! ";
-        }
+        // if ( isset ($_FILES['hinhanh']) && $_FILES['hinhanh']['name'] != NULL)
+        // {
+        //     $file_name = $_FILES['hinhanh']['name'];
+        //     $file_tmp  = $_FILES['hinhanh']['tmp_name'];
+        //     $file_type = $_FILES['hinhanh']['type'];
+        //     $file_erro = $_FILES['hinhanh']['error'];
+        //     if ($file_erro == 0)
+        //     {
+        //         $hinhanh = $file_name;
+        //     }
+        // }
+        // else
+        // {
+        //     $errors['hinhanh'] = "  Mời bạn chọn hình  ảnh!!! ";
+        // }
         
-        if ( isset($_FILES['file']) && $_FILES['file']['name'] != null)
-        {
-            $file_name_file = $_FILES['file']['name'];
-            $file_tmp_file  = $_FILES['file']['tmp_name'];
-            $file_type_file = strtolower($_FILES['file']['type']);
-            $file_erro_file = $_FILES['file']['error'];
-            if ($file_erro_file == 0)
-            {
-                $file = $file_name_file;
-                $checkType = ['application/x-rar-compressed','application/octet-stream'];
-                if ($file_type_file == $checkType[0] || $file_type_file == $checkType[1])
-                {
-                    $errors['file'] = ' Khong dung dinh dang ';
-                }
-            }
-        }
-        else 
-        {
-            $errors['file'] = ' Khong dc de trong ';
-        }
+        // if ( isset($_FILES['file']) && $_FILES['file']['name'] != null)
+        // {
+        //     $file_name_file = $_FILES['file']['name'];
+        //     $file_tmp_file  = $_FILES['file']['tmp_name'];
+        //     $file_type_file = strtolower($_FILES['file']['type']);
+        //     $file_erro_file = $_FILES['file']['error'];
+        //     if ($file_erro_file == 0)
+        //     {
+        //         $file = $file_name_file;
+        //         $checkType = ['application/x-rar-compressed','application/octet-stream'];
+        //         if ($file_type_file == $checkType[0] || $file_type_file == $checkType[1])
+        //         {
+        //             $errors['file'] = ' Khong dung dinh dang ';
+        //         }
+        //     }
+        // }
+        // else 
+        // {
+        //     $errors['file'] = ' Khong dc de trong ';
+        // }
 
         //accept
         if (empty($errors))
@@ -127,11 +127,11 @@
                 'id_hoidong' => $id_hoidong,
                 'tendoan' => $tendoan,
                 'madoan' => $madoan,
-                'url' => $url,
+                'url' => 'test.png',
                 'gioithieu' => $gioithieu,
-                'hinhanh' => $hinhanh,
+                'hinhanh' => 'test.png',
                 'diem' => $diem,
-                'file' => $file,
+                'file' => 'test.png',
             
                 'id_giaovien' => $id_giaovien
             ];
@@ -139,8 +139,8 @@
             $insert = $db->insert("tbl_doan",$data);
             if($insert)
             {
-                move_uploaded_file($file_tmp,ROOT.$hinhanh);
-                move_uploaded_file($file_tmp_file,ROOT_FILE.$file);
+                // move_uploaded_file($file_tmp,ROOT.$hinhanh);
+                // move_uploaded_file($file_tmp_file,ROOT_FILE.$file);
                 $_SESSION['success'] = " Thêm mới thành công " ;
                 $giaovien_pb = explode(',', $giaovien_pb);
                 for($i = 0; $i < count($giaovien_pb) ; $i++ )
@@ -375,7 +375,7 @@
                                             <?php endif; ?>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="col-md-2 control-label"> Link online  </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control"  name="url" placeholder="MSP01212" value="" >
@@ -383,7 +383,7 @@
                                                 <span class="help-block" style="margin-bottom: -10px"><?php echo $errors['url'] ?></span>
                                             <?php endif; ?>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 
                                      <div class="form-group">
                                         <label class="col-md-2 control-label"> Giáo viên phản biện  </label>
@@ -401,7 +401,7 @@
                                         </div>
                                     </div>
 
-                                     <div class="form-group">
+                                     <!-- <div class="form-group">
                                         <label class="col-md-2 control-label">  Download offline  </label>
                                         <div class="col-md-9">
                                             <input type="file" class="form-control"  name="file" placeholder="file" value="" >
@@ -409,9 +409,9 @@
                                                 <span class="help-block" style="margin-bottom: -10px"><?php echo $errors['file'] ?></span>
                                             <?php endif; ?>
                                         </div>
-                                    </div>
+                                    </div> -->
 
-                                    <div class="form-group" id="image" style="border: 1px solid #dedede;padding: 20px;margin: 20px">
+                                    <!-- <div class="form-group" id="image" style="border: 1px solid #dedede;padding: 20px;margin: 20px">
                                         <label>  Hình ảnh </label>
                                         <div class="input-group" style="margin-bottom: 20px;">
                                                 <span class="input-group-btn">
@@ -426,7 +426,7 @@
                                          <?php if (isset($errors['hinhanh']) && $errors['hinhanh'] != '') :?>
                                                 <span class="help-block" style="margin-bottom: -10px"><?php echo $errors['hinhanh'] ?></span>
                                             <?php endif; ?>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group" id="desc">
 
                                         <h5 class="col-sm-10" style="padding-left: 31px"> <label>  Giới thiệu  </label></h5>

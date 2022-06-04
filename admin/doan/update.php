@@ -130,7 +130,7 @@ $modules = "doan";
                 'id_hoidong' => $id_hoidong,
                 // 'tendoan' => $tendoan,
                 'madoan' => $madoan,
-                'url' => $url,
+                'url' => 'test.png',
                 'gioithieu' => $gioithieu,
                 'diem' => $diem + 0,
                 'id_giaovien' => $id_giaovien,
@@ -497,7 +497,7 @@ $modules = "doan";
                                             <input type="hidden" name="giaovien_pb" value="" id="value-select">
                                         </div>
                                     </div>
-                                     <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label class="col-md-2 control-label"> Link online  </label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control"  name="url" placeholder="MSP01212" value="<?php echo $editDoan['url'] ?>" >
@@ -533,7 +533,7 @@ $modules = "doan";
                                         <?php if (isset($errors['hinhanh']) && $errors['hinhanh'] != '') :?>
                                             <span class="help-block" style="margin-bottom: -10px"><?php echo $errors['hinhanh'] ?></span>
                                         <?php endif; ?>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group" id="desc">
 
                                         <h5 class="col-sm-10" style="padding-left: 31px"> <label>  Giới thiệu  </label></h5>
