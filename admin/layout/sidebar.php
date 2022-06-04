@@ -28,7 +28,7 @@
                             <a href="<?php echo base_url('/admin/lop') ?>"> Quản lý Lớp  </a>
                         </li>
                         <li class="<?php echo isset($modules) && $modules == 'giaovien' ? 'open active' : '' ?>">
-                            <a href="<?php echo base_url('/admin/giaovien') ?>"> Quản lý Giáo viên  </a>
+                            <a href="<?php echo base_url('/admin/giaovien') ?>"> Quản lý Giảng viên  </a>
                         </li>
                         <li class="<?php echo isset($modules) && $modules == 'hoidong' ? 'open active' : '' ?>">
                             <a href="<?php echo base_url('/admin/hoidong') ?>"> Quản lý Hội đồng  </a>
@@ -62,7 +62,7 @@
                         <a href="<?php echo base_url('/admin/info') ?>"> Quản lý thông tin    </a>
                     </li>
                     <li class="<?php echo isset($modules) && $modules == 'giaovien' ? 'open active' : '' ?>">
-                        <a href="<?php echo base_url('/admin/giaovien') ?>"> Quản lý Giáo viên  </a>
+                        <a href="<?php echo base_url('/admin/giaovien') ?>"> Quản lý Giảng viên  </a>
                     </li>
                 <?php endif ?>
 
@@ -70,6 +70,9 @@
                     <li class="<?php echo isset($modules) && $modules == 'dang-ky' ? 'open active' : '' ?>">
                         <a href="<?php echo base_url('/admin/doan/dang-ky.php') ?>"> Đăng ký đồ án   </a>
                     </li>
+                        <li class="<?php echo isset($modules) && $modules == 'detai' ? 'open active' : '' ?>">
+                            <a href="<?php echo base_url('/admin/detai') ?>"> Danh sách đề tài </a>
+                        </li>
                     <li class="<?php echo isset($modules) && $modules == 'danh-sach' ? 'open active' : '' ?>">
                         <a href="<?php echo base_url('/admin/doan/danh-sach.php') ?>"> Danh sách đồ án   </a>
                     </li>

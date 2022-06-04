@@ -140,7 +140,7 @@ $modules = "doan";
                         <div class="form-group">
                            
                           <select class="form-control" name="id_giaovien">
-                                 <option value=""> -- Chọn giáo viên HD -- </option>
+                                 <option value=""> -- Chọn giảng viên HD -- </option>
                                 <?php foreach ($giaovien as $item): ?>
                                      <option value="<?php echo $item['id'] ?>" <?php echo isset($_POST['id_giaovien']) && $_POST['id_giaovien'] == $item['id'] ? "selected = 'selected'" : '' ?>><?php echo $item['tengiaovien'] ?></option>
                                 <?php endforeach ?>
@@ -198,17 +198,17 @@ $modules = "doan";
                                         <th>
                                             #
                                         </th>
-                                        <th>
+                                        <!-- <th>
                                             Hình ảnh 
-                                        </th>
+                                        </th> -->
                                         <th>
                                             Tên đồ án
                                         </th>
                                         <th>
-                                            Giáo viên Pb && Hội Đồng
+                                            Giảng viên Pb && Hội Đồng
                                         </th>
                                         <th>
-                                            Người thực hiện
+                                            Sinh viên
                                         </th>
                                         <th> Thông tin </th>
                                         <td>Tóm tắt</td>
@@ -219,22 +219,22 @@ $modules = "doan";
                                         <?php foreach ($doan as $item): ?>
                                             <tr>
                                                 <td><?php echo $item['id'] ?></td>
-                                                <td>
+                                                <!-- <td>
                                                     <?php if ($item["hinhanh"] != null) { ?>
                                                         <img src="<?php echo base_url('/public/uploads/images/') ?><?php echo $item['hinhanh'] ?>"
                                                             alt="" class="img img-thumbnail"
                                                             style="width: 100px;height: 100px;">
                                                     <?php } else { echo "Chưa cập nhật"; } ?>
-                                                </td>
+                                                </td> -->
                                                 <td> 
                                                     <?php echo $item['tendoan'] ?>
-                                                    <?php if ($item['url'] != null || $item['url'] != '') { ?>
+                                                    <!-- <?php if ($item['url'] != null || $item['url'] != '') { ?>
                                                         <p><a href="<?php echo $item['url'] ?>" target="_blank"> Link Online  </a></p>
                                                     <?php } ?>
                                                     
                                                     <?php if ($item['file'] != null || $item['file'] != '') { ?>
                                                         <p><a href="<?php echo base_url("/public/uploads/file/" . $item['file']) ?>" target="_blank"> Download Offline </a></p>
-                                                    <?php } ?>
+                                                    <?php } ?> -->
                                                  </td>
                                                  <?php
                                                     $sql = " SELECT tbl_doan_giaovien.*, tbl_giaovien.tengiaovien as tengiaovien,tbl_giaovien.id as idgv from tbl_doan_giaovien
@@ -264,11 +264,11 @@ $modules = "doan";
                                                 <td> <?php echo $item['tensinhvien'] ?> </td>
                                                 <td>
                                                     <ul>
-                                                        <li>  Ma đồ án : <?php echo $item['madoan'] ?></li>
-                                                        <li>  Lớp : <?php echo $item['tenlop'] ?></li>
-                                                        <li>  Chuyên ngành : <?php echo $item['tenchuyennganh'] ?></li>
-                                                        <li>Gv hướng dẫn : <?php echo $item['tengiaovien'] ?></li>
                                                         <li>  Khoa : <?php echo $item['tenkhoa'] ?></li>
+                                                        <li>  Chuyên ngành : <?php echo $item['tenchuyennganh'] ?></li>
+                                                        <li>  Lớp : <?php echo $item['tenlop'] ?></li>
+                                                        <li>  Mã đồ án : <?php echo $item['madoan'] ?></li>
+                                                        <li>Gv hướng dẫn : <?php echo $item['tengiaovien'] ?></li>
                                                         <li>  Điểm  : <?php echo $item['diem'] ?></li>
 
                                                     </ul>

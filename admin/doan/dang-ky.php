@@ -11,6 +11,13 @@
     }
 
     $user = $db->query("tbl_sinhvien","*"," AND id = " . $_SESSION["admin_id"])[0];
+
+    if ($user["process"] == 1) {
+        $_SESSION['success'] = " Bạn đã đủ điều kiện tốt nghiệp" ;
+                
+        redirect('/admin/doan/danh-sach.php');
+    }
+
     $khoa = $db->query("tbl_khoa","*"," AND makhoa = '" . $user["id_makhoa"] . "'")[0];
     $chuyennganh = $db->query("tbl_chuyennganh","*"," AND machuyennganh = '" . $user["id_machuyennganh"] . "'")[0];
     $lop = $db->query("tbl_lop","*"," AND malop = '" . $user["id_malop"] . "'")[0];
@@ -25,7 +32,7 @@
         $id_masinhvien = getValue("id_masinhvien","POST","0");
         $tendoan = getValue("tendoan","POST","");
         $id_giaovien = getValue("id_giaovien","POST","");
-    
+
         if ($id_makhoa == '') {
             $errors['id_makhoa'] = ' Mã khoa không được để trống ' ;
         }
@@ -44,6 +51,14 @@
 
         if ($tendoan == '') {
             $errors['tendoan'] = ' Tên đồ án    không được để trống ' ;
+        }
+
+        $limitGiangVien = $db->query("tbl_doan", "*", " AND id_giaovien = '" . $id_giaovien . "'");
+
+        if (count($limitGiangVien) > 5) {
+            $_SESSION['success'] = " Giảng viên này đã đủ chỉ tiêu" ;
+                    
+            redirect('/admin/doan/danh-sach.php');
         }
         
         if (empty($errors)) {

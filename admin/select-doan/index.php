@@ -249,7 +249,7 @@ $modules = "select-doan";
                                                 <td> <?php echo $item['tensinhvien'] ?> </td>
                                                 <td>
                                                     <ul>
-                                                        <li>  Ma đồ án : <?php echo $item['madoan'] ?></li>
+                                                        <li>  Mã đồ án : <?php echo $item['madoan'] ?></li>
                                                         <li>  Lớp : <?php echo $item['tenlop'] ?></li>
                                                         <li>  Chuyên ngành : <?php echo $item['tenchuyennganh'] ?></li>
                                                         <li>Gv hướng dẫn : <?php echo $item['tengiaovien'] ?></li>

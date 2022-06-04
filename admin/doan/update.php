@@ -50,7 +50,10 @@ $modules = "doan";
         $id_giaovien = getValue("id_giaovien","POST","");
         $id_hoidong = getValue("id_hoidong","POST","");
         $dot_id = getValue("dot_id","POST","");
-       $giaovien_pb = getValue("giaovien_pb","POST","");
+        $giaovien_pb = getValue("giaovien_pb","POST","");
+
+        
+        $sinhvienhientai = $db->query("tbl_sinhvien", "*", " AND masinhvien = '" . $id_masinhvien . "'")[0];
 
         if ($id_makhoa == '')
         {
@@ -129,53 +132,54 @@ $modules = "doan";
                 'madoan' => $madoan,
                 'url' => $url,
                 'gioithieu' => $gioithieu,
-                'diem' => $diem,
+                'diem' => $diem + 0,
                 'id_giaovien' => $id_giaovien,
-                'dot_id' => $dot_id
-            
+                'dot_id' => $dot_id,
+                'hinhanh' => 'test.png',
+                'file' => 'file.png'
             ];
 
-            if ( isset ($_FILES['hinhanh']) && $_FILES['hinhanh']['name'] != NULL)
-            {
-                $file_name = $_FILES['hinhanh']['name'];
-                $file_tmp  = $_FILES['hinhanh']['tmp_name'];
-                $file_type = $_FILES['hinhanh']['type'];
-                $file_erro = $_FILES['hinhanh']['error'];
-                if ($file_erro == 0)
-                {
-                    $data['hinhanh'] = $file_name;
-                    move_uploaded_file($file_tmp,ROOT.$file_name);
-                }
-            }
+            // if ( isset ($_FILES['hinhanh']) && $_FILES['hinhanh']['name'] != NULL)
+            // {
+            //     $file_name = $_FILES['hinhanh']['name'];
+            //     $file_tmp  = $_FILES['hinhanh']['tmp_name'];
+            //     $file_type = $_FILES['hinhanh']['type'];
+            //     $file_erro = $_FILES['hinhanh']['error'];
+            //     if ($file_erro == 0)
+            //     {
+            //         $data['hinhanh'] = $file_name;
+            //         move_uploaded_file($file_tmp,ROOT.$file_name);
+            //     }
+            // }
 
-             if ( isset($_FILES['file']) && $_FILES['file']['name'] != null)
-            {
-                $file_name_file = $_FILES['file']['name'];
-                $file_tmp_file  = $_FILES['file']['tmp_name'];
-                $file_type_file = strtolower($_FILES['file']['type']);
-                $file_erro_file = $_FILES['file']['error'];
-                if ($file_erro_file == 0)
-                {
-                    $file = $file_name_file;
-                    $checkType = ['application/x-rar-compressed','application/octet-stream'];
-                    if ($file_type_file == $checkType[0] || $file_type_file == $checkType[1])
-                    {
+            //  if ( isset($_FILES['file']) && $_FILES['file']['name'] != null)
+            // {
+            //     $file_name_file = $_FILES['file']['name'];
+            //     $file_tmp_file  = $_FILES['file']['tmp_name'];
+            //     $file_type_file = strtolower($_FILES['file']['type']);
+            //     $file_erro_file = $_FILES['file']['error'];
+            //     if ($file_erro_file == 0)
+            //     {
+            //         $file = $file_name_file;
+            //         $checkType = ['application/x-rar-compressed','application/octet-stream'];
+            //         if ($file_type_file == $checkType[0] || $file_type_file == $checkType[1])
+            //         {
                         
-                        $_SESSION['errors'] = " File khong dung dinh dang  ";
-                        redirect('/admin/doan');
-                    }else
-                    {
-                         move_uploaded_file($file_tmp_file,ROOT_FILE.$file);
-                         $data['file'] = $file;
-                    }
-                }
-            }
+            //             $_SESSION['errors'] = " File khong dung dinh dang  ";
+            //             redirect('/admin/doan');
+            //         }else
+            //         {
+            //              move_uploaded_file($file_tmp_file,ROOT_FILE.$file);
+            //              $data['file'] = $file;
+            //         }
+            //     }
+            // }
             
-            $update = $db->update("tbl_doan",$data," id = $id ");
+            $update = $db->update("tbl_doan", $data, "id = $id");
 
             if($giaovien_pb != '')
             {
-                 $giaovien_pb = explode(',', $giaovien_pb);
+                $giaovien_pb = explode(',', $giaovien_pb);
                 foreach($listgv as $item)
                 {
                     $db->delete("tbl_doan_giaovien","id_doan = ".$id);  
@@ -191,17 +195,23 @@ $modules = "doan";
                     $insert2 = $db->insert("tbl_doan_giaovien",$data2);
                 }
             }
+            
             if($update)
             {
-                move_uploaded_file($file_tmp,ROOT.$hinhanh);
-                $_SESSION['success'] = " Cap nhat  thành công " ;
+                // move_uploaded_file($file_tmp,ROOT.$hinhanh);
+                $dataSV["process"] = 1;
 
+                if ($data["diem"] >= 5) {
+                    $db->update("tbl_sinhvien",$dataSV,"id = ". $sinhvienhientai['id']);
+                }
+
+                $_SESSION['success'] = " Cập nhật  thành công " ;
                
                 redirect('/admin/doan');
             }
             else
             {
-                $_SESSION['errors'] = " Cap nhat  thất bại ";
+                $_SESSION['errors'] = " Cập nhật  thất bại ";
                 redirect('/admin/doan');
             }
         }

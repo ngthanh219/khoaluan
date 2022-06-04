@@ -60,7 +60,9 @@
                                     <th width="">Tên đề tài</th>
                                     <th width="">Sở hữu (x: Chưa sở hữu, v: Đã sở hữu)</th>
                                     <th width="">Tình trạng</th>
-                                    <th class="">Thao tác </th>
+                                    <?php if ($_SESSION['table'] != "tbl_sinhvien") { ?>
+                                        <th class="">Thao tác </th>
+                                    <?php } ?>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -72,11 +74,12 @@
                                         <td><span> <?= ($item['selected'] == 0) ? "x" : "<b>v</b>" ?> </span></td>
                                         <td><span> <?= ($item['status'] == 0) ? "Chưa duyệt" : "Đã duyệt" ?> </span></td>
 
-                                        <td class="">
-                                            <a href="delete.php?id=<?php echo $item['id'] ?>" class="btn btn-xs red" onclick="return showAlert()"><i class="fa fa-trash-o"></i></a>
-                                            <a href="update.php?id=<?php echo $item['id'] ?>" class="btn btn-xs green"><i class="fa fa-pencil"></i></a>
-                                        </td>
-
+                                        <?php if ($_SESSION['table'] != "tbl_sinhvien") { ?>
+                                            <td class="">
+                                                <a href="delete.php?id=<?php echo $item['id'] ?>" class="btn btn-xs red" onclick="return showAlert()"><i class="fa fa-trash-o"></i></a>
+                                                <a href="update.php?id=<?php echo $item['id'] ?>" class="btn btn-xs green"><i class="fa fa-pencil"></i></a>
+                                            </td>
+                                        <?php } ?>
                                     </tr>
                                 <?php endforeach;  ?>
 
